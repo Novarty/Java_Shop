@@ -6,22 +6,24 @@ import javax.persistence.*;
  * Created by admin on 10.04.2017.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-
-    @Column
     private String name;
-    @Column
     private String email;
-    @Column
     private String password;
-    @Column
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    private Boolean isActive;
 
+    public Boolean getActive() {
+        return isActive;
+    }
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
     public String getName() {
         return name;
     }
