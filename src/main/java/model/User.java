@@ -16,13 +16,14 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
-    private Boolean isActive;
+    @Enumerated(EnumType.STRING)
+    private ActiveRole isActive;
 
-    public Boolean getActive() {
+    public ActiveRole getIsActive() {
         return isActive;
     }
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setIsActive(ActiveRole isActive) {
+        this.isActive = isActive;
     }
     public String getName() {
         return name;

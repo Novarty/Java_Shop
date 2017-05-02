@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
     <security:http auto-config="true" access-denied-page="/error403" use-expressions="true">
-        <!--<security:intercept-url pattern="/calc" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>-->
+        <security:intercept-url pattern="/all_users" access="hasRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/sign_up" access="isAnonymous()"/>
         <security:intercept-url pattern="/sign_in" access="isAnonymous()"/>
         <!--<security:intercept-url pattern="/operations" access="hasAnyRole('ROLE_ADMIN,ROLE_USER')"/>-->

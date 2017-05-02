@@ -8,3 +8,9 @@
     font-size: 20px;
     margin: 15px 0 10px 0;
 }
+.bold{
+    font-weight:bold
+}
+.center{
+    text-align: center;
+}

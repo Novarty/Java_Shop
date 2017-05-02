@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import repository.UserRepository;
 import service.UserService;
 
+import java.util.List;
+
 /**
  * Created by admin on 15.04.2017.
  */
@@ -20,5 +22,11 @@ public class UserServiceImpl implements UserService {
     public void saveNewUser(UserRegistrationForm form) {
         User user = UserRegistrationFormToUserTransformer.transform(form);
         userRepository.save(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        List<User> list = userRepository.findAll();
+        return list;
     }
 }

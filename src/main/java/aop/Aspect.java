@@ -7,13 +7,13 @@ public class Aspect {
     // for executable
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
-        System.out.println("Start invoking "
+        System.out.println("Начало выполнения метода "
                 + joinPoint.getTarget().getClass().getSimpleName()
                 + "."
                 + joinPoint.getSignature().getName());
         Object result = joinPoint.proceed();
         long end = System.currentTimeMillis();
-        System.out.println("End invoking method: "+ joinPoint.getTarget().getClass().getSimpleName()+" "+ (end - start) + "ms");
+        System.out.println("Конец выполнения метода: "+ joinPoint.getTarget().getClass().getSimpleName()+" "+ (end - start) + "ms");
         return result;
     }
     // for annotation
