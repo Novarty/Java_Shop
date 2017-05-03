@@ -12,13 +12,15 @@ public class ItemsInOrder {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-//    @OneToOne(targetEntity = Item.class, mappedBy = "item_id")
-//    private int item_id;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "item_id", unique = true, nullable = false)
+    private Item item;
 
-//    @OneToOne(targetEntity = Stock.class, mappedBy = "stock_id")
-//    private int stock_id;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "stock_id", unique = true, nullable = false)
+    private Stock stock;
 
-    private int amount;
+//    private int amount;
 
     public int getId() {
         return id;
@@ -26,10 +28,10 @@ public class ItemsInOrder {
     public void setId(int id) {
         this.id = id;
     }
-    public int getAmount() {
-        return amount;
-    }
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
+//    public int getAmount() {
+//        return amount;
+//    }
+//    public void setAmount(int amount) {
+//        this.amount = amount;
+//    }
 }

@@ -1,5 +1,8 @@
 package model;
 
+import model.enums.ActiveRole;
+import model.enums.UserRole;
+
 import javax.persistence.*;
 
 /**

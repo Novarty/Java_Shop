@@ -30,7 +30,7 @@
                 </tr>
                 <c:forEach items="${users}" var="user">
                     <tr>
-                        <td><c:out value="${user.email}"/></td>
+                        <td><c:out value="${user.email}"/></td>  <%--value=id. а в тело положить user.email--%>
                         <td><c:out value="${user.name}"/></td>
                         <td><c:out value="${user.role}"/></td>
                         <td><c:out value="${user.isActive}"/></td>

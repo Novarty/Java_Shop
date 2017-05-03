@@ -18,6 +18,7 @@
 </head>
 <body>
 <security:authorize access="hasRole('ROLE_BUYER')">
+    <%--HEADER--%>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -32,72 +33,109 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Главная</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/logout">Выйти</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
-    </div>
-    <div class="container">
-        <div class="row margin_top">
+    </div><%--HEADER end--%>
+    <div class="container" style="margin-top: 75px;"><%--Items--%>
+        <div class="row">
+            <c:forEach items="${items}" var="item">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <img src="/resources/img/img.png" alt="...">
                     <div class="caption">
-                        <h3>Ярлык эскиза</h3>
-                        <p>...</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Кнопка</a> <a href="#"
-                                                                                           class="btn btn-default"
-                                                                                           role="button">Кнопка</a></p>
+                        <h3 class="center">${item.itemName}</h3>
+                        <p class="center"><a href="#" class="btn btn-primary" role="button">В корзину</a> <a
+                                href="/show?id=${item.id}" class="btn btn-default"
+                                role="button">Подробнее</a></p>
                     </div>
                 </div>
             </div>
+            </c:forEach>
         </div>
-        <p><a href="/logout">Выйти</a></p>
-    </div>
+    </div> <%--Items end--%>
 </security:authorize>
 <security:authorize access="isAnonymous()">
-    <p><a href="/sign_in">Войти</a></p>
-    <p><a href="/sign_up">Зарегистрироваться</a></p>
+    <%--HEADER--%>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Java_Shop</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Главная</a></li>
+                    <li><a href="/sign_in">Войти</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div><%--HEADER end--%>
+    <div class="container" style="margin-top: 75px;"><%--Items--%>
+        <div class="row">
+            <c:forEach items="${items}" var="item">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="/resources/img/img.png" alt="...">
+                    <div class="caption">
+                        <h3 class="center">${item.itemName}</h3>
+                        <p class="center"><a href="#" class="btn btn-primary" role="button">В корзину</a> <a
+                                href="/show?id=${item.id}" class="btn btn-default"
+                                role="button">Подробнее</a></p>
+                    </div>
+                </div>
+            </div>
+            </c:forEach>
+        </div>
+    </div> <%--Items end--%>
 </security:authorize>
 <security:authorize access="hasRole('ROLE_ADMIN')">
     <%--HEADER--%>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Java_Shop</a>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Java_Shop</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Главная</a></li>
+                    <li><a href="/all_users">Пользователи</a></li>
+                    <li><a href="/new">Добавить товар</a></li>
+                    <li class="navbar-right"><a href="/logout">Выйти</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Главная</a></li>
-                <li><a href="/all_users">Пользователи</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
     </div>
-</div>
     <%--Items--%>
-<div class="container" style="margin-top: 75px;">
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="/resources/img/img.png" alt="...">
-                <div class="caption">
-                    <h3 class="center">Наименование товара</h3>
-                    <p class="center">Описание товара.</p>
-                    <p class="center"><a href="#" class="btn btn-primary" role="button">Кнопка</a> <a href="#" class="btn btn-default"
-                                                                                       role="button">Кнопка</a></p>
+    <div class="container" style="margin-top: 75px;"><%--Items--%>
+        <div class="row">
+            <c:forEach items="${items}" var="item">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="/resources/img/img.png" alt="...">
+                    <div class="caption">
+                        <h3 class="center">${item.itemName}</h3>
+                        <p class="center"><a href="#" class="btn btn-primary" role="button">В корзину</a> <a
+                                href="/show?id=${item.id}" class="btn btn-default"
+                                role="button">Подробнее</a></p>
+                    </div>
                 </div>
             </div>
+            </c:forEach>
         </div>
-    </div>
-    <p><a href="/logout">Выйти</a></p>
-    </security:authorize>
+    </div> <%--Items end--%>
+</security:authorize>
 </body>
 </html>

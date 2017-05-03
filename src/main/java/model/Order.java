@@ -1,5 +1,7 @@
 package model;
 
+import model.enums.ItemStatus;
+
 import javax.persistence.*;
 
 /**

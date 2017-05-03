@@ -12,26 +12,23 @@
 <body>
 <div class="container">
     <sf:form cssClass="form-signin" action="/sign_up" method="post" modelAttribute="userform">
-        <h1 id="form-signin-heading">Регистрация</h1>
+        <h2 class="form-signin-heading">Регистрация</h2>
         <div class="panel panel-default panel-body">
-            <div class="col-md-6">
-                <c:if test="${not empty error}">
-                    <%--<p>${error}</p>--%>
-                    <p class="textline">Некорректные данные</p>
-                </c:if>
-                <sf:label cssClass="form-group" path="name">Имя: </sf:label> <sf:input path="name"/> <br>
-
-                <c:if test="${not empty emailExist}"><p class="textline">Email уже существует</p></c:if> <br>
-                <sf:label cssClass="form-group" path="email">Email: </sf:label> <sf:input path="email"/> <br>
-
-                <sf:label cssClass="form-group" path="password">Пароль: </sf:label> <sf:input path="password"/> <br>
-
-                <sf:label cssClass="form-group" path="repassword">Повторите пароль: </sf:label> <sf:input
-                    path="repassword"/> <br>
-                <button class="btn btn-primary" type="submit">Сохранить</button>
-            </div>
+            <c:if test="${not empty error}">
+                <%--<p>${error}</p>--%>
+                <p class="textline">Некорректные данные</p>
+            </c:if>
+            <sf:input placeholder="Имя" cssClass="form-control" path="name"/> <br>
+            <c:if test="${not empty emailExist}">
+                <p class="textline">Email уже существует</p><br>
+            </c:if>
+            <sf:input placeholder="Email" cssClass="form-control" path="email"/> <br>
+            <sf:input placeholder="Пароль" cssClass="form-control" path="password"/> <br>
+            <sf:input placeholder="Повторите пароль" cssClass="form-control" path="repassword"/> <br>
+            <button class="btn btn-primary" type="submit">Сохранить</button>
         </div>
-        <a href="/">На главную</a>
+        <a class="center" href="/">На главную</a>
+        <a href="/sign_in">Войти</a>
     </sf:form>
 </div>
 <script charset="UTF-8" type="text/javascript">vkdId = 'gmakpjahbdpafpgbnnlhbgnjacdniaeb';</script>

@@ -1,7 +1,7 @@
 package form;
 
 import model.User;
-import model.UserRole;
+import model.enums.UserRole;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserRegistrationFormToUserTransformer {
