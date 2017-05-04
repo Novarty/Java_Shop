@@ -10,6 +10,6 @@ import java.util.List;
  */
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
-    Item findOneByItemName(String itemName);
+    Item findOneById(Integer id);
     List<Item> findAll();
 }

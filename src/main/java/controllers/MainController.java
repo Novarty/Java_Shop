@@ -22,4 +22,8 @@ public class MainController {
         model.addAttribute("items", itemService.getAllItems());
         return "welcome";
     }
+    @RequestMapping(value = "/forbidden")
+    public String forbiddenPage(){
+        return "forbidden";
+    }
 }

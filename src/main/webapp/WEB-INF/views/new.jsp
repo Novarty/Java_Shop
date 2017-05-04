@@ -24,10 +24,15 @@
             <c:if test="${not empty error}">
                 <p class="textline">Некорректные данные</p>
             </c:if>
+            <sf:errors path="itemName"/>
             <sf:input placeholder="Название" cssClass="form-control" path="itemName"/> <br>
+            <sf:errors path="description"/>
             <sf:input placeholder="Описание" cssClass="form-control" path="description"/> <br>
+            <sf:errors path="city"/>
             <sf:input placeholder="Город склада" cssClass="form-control" path="city"/> <br>
+            <sf:errors path="address"/>
             <sf:input placeholder="Адрес склада" cssClass="form-control" path="address"/> <br>
+            <sf:errors path="amount"/>
             <sf:input placeholder="Количество единиц товара" cssClass="form-control" path="amount"/> <br>
             <button class="btn btn-primary" type="submit">Сохранить</button>
         </div>

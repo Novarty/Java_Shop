@@ -36,4 +36,9 @@ public class ItemServiceImpl implements ItemService {
         Item item = ItemCreatingFormToItemTransformer.transform(form);
         itemRepository.saveAndFlush(item);
     }
+
+    @Override
+    public Item findOneById(Integer id) {
+       return itemRepository.findOneById(id);
+    }
 }

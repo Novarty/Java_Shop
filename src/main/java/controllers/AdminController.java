@@ -1,8 +1,10 @@
 package controllers;
 
 import form.ItemCreatingForm;
+import model.Item;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -10,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import service.ItemService;
 import service.StockService;
 import service.UserService;
@@ -36,6 +39,7 @@ public class AdminController {
         model.addAttribute("users", users);
         return "all_users";
     }
+    @Secured(value = "ROLE_ADMIN")
     @RequestMapping(value = "/all_users", method = RequestMethod.POST)
     private String editUsersInfo(ModelMap model){
 
@@ -47,7 +51,7 @@ public class AdminController {
         model.addAttribute("itemform", new ItemCreatingForm());
         return "new";
     }
-
+    @Secured(value = "ROLE_ADMIN")
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     private String createNewItem(@ModelAttribute("itemform") @Valid ItemCreatingForm form, BindingResult bindingResult, ModelMap modelMap) {
         if (bindingResult.hasErrors()) {
@@ -68,4 +72,10 @@ public class AdminController {
 //        itemService.editItem(form);
 //        return "edit";
 //    }
+    @RequestMapping(value = "/show")
+    private String showItemPage(Model model, @RequestParam("id") String param){
+        Item item = itemService.findOneById(Integer.valueOf(param));
+        model.addAttribute("item",item);
+        return "show";
+    }
 }

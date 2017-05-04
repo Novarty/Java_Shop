@@ -16,7 +16,6 @@ public class UserRegistrationForm {
     private String password;
 
     @Size(min = 6, max = 24, message = "Пароль неверной длины")
-    @NotEmpty(message = "Поле обязательно к заполнению")
     private String repassword;
 
     public String getName() {

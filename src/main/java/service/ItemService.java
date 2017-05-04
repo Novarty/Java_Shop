@@ -12,4 +12,5 @@ public interface ItemService {
     void saveNewItem(ItemCreatingForm form);
     List<Item> getAllItems();
     void editItem(ItemCreatingForm form);
+    Item findOneById(Integer id);
 }

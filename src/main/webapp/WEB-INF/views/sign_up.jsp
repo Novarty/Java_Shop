@@ -14,16 +14,16 @@
     <sf:form cssClass="form-signin" action="/sign_up" method="post" modelAttribute="userform">
         <h2 class="form-signin-heading">Регистрация</h2>
         <div class="panel panel-default panel-body">
-            <c:if test="${not empty error}">
-                <%--<p>${error}</p>--%>
-                <p class="textline">Некорректные данные</p>
-            </c:if>
+            <sf:errors path="name"/>
             <sf:input placeholder="Имя" cssClass="form-control" path="name"/> <br>
             <c:if test="${not empty emailExist}">
                 <p class="textline">Email уже существует</p><br>
             </c:if>
+            <sf:errors path="email"/>
             <sf:input placeholder="Email" cssClass="form-control" path="email"/> <br>
+            <sf:errors path="password"/>
             <sf:input placeholder="Пароль" cssClass="form-control" path="password"/> <br>
+            <sf:errors path="repassword"/>
             <sf:input placeholder="Повторите пароль" cssClass="form-control" path="repassword"/> <br>
             <button class="btn btn-primary" type="submit">Сохранить</button>
         </div>
