@@ -22,9 +22,9 @@
             <sf:errors path="email"/>
             <sf:input placeholder="Email" cssClass="form-control" path="email"/> <br>
             <sf:errors path="password"/>
-            <sf:input placeholder="Пароль" cssClass="form-control" path="password"/> <br>
+            <sf:input placeholder="Пароль" type="password" cssClass="form-control" path="password"/> <br>
             <sf:errors path="repassword"/>
-            <sf:input placeholder="Повторите пароль" cssClass="form-control" path="repassword"/> <br>
+            <sf:input placeholder="Повторите пароль" type="password" cssClass="form-control" path="repassword"/> <br>
             <button class="btn btn-primary" type="submit">Сохранить</button>
         </div>
         <a class="center" href="/">На главную</a>

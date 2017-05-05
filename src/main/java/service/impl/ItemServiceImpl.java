@@ -1,7 +1,5 @@
 package service.impl;
 
-import form.ItemCreatingForm;
-import form.ItemCreatingFormToItemTransformer;
 import model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +17,14 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     ItemRepository itemRepository;
 
+//    @Override
+//    public void saveNewItem(ItemCreatingForm form) {
+//        Item item = ItemCreatingFormToItemTransformer.transform(form);
+//        itemRepository.save(item);
+//    }
+
     @Override
-    public void saveNewItem(ItemCreatingForm form) {
-        Item item = ItemCreatingFormToItemTransformer.transform(form);
+    public void save(Item item) {
         itemRepository.save(item);
     }
 
@@ -31,14 +34,19 @@ public class ItemServiceImpl implements ItemService {
         return list;
     }
 
-    @Override
-    public void editItem(ItemCreatingForm form) {
-        Item item = ItemCreatingFormToItemTransformer.transform(form);
-        itemRepository.saveAndFlush(item);
-    }
+//    @Override
+//    public void editItem(ItemCreatingForm form) {
+//        Item item = ItemCreatingFormToItemTransformer.transform(form);
+//        itemRepository.saveAndFlush(item);
+//    }
 
     @Override
     public Item findOneById(Integer id) {
        return itemRepository.findOneById(id);
+    }
+
+    @Override
+    public Item findOneByItemName(String itemName) {
+        return itemRepository.findOneByItemName(itemName);
     }
 }

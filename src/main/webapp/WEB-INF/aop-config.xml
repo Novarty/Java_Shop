@@ -5,7 +5,8 @@
 
     <aop:config>
         <aop:pointcut id="logging" expression="@annotation(annotation.Logging)"/>
-        <aop:pointcut id="repositoryLog" expression="execution(* service.*.*(..))"/>
+        <aop:pointcut id="serviceLog" expression="execution(* service.*.*(..))"/>
+        <aop:pointcut id="repositoryLog" expression="execution(* repository.*.*(..))"/>
         <aop:aspect ref="serviceAspect">
             <aop:around method="logging" pointcut-ref="logging"/>
             <aop:around method="log" pointcut-ref="repositoryLog"/>

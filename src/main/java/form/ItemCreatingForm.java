@@ -3,6 +3,7 @@ package form;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Created by admin on 02.05.2017.
@@ -11,6 +12,7 @@ public class ItemCreatingForm {
     @NotEmpty(message = "Укажите название товара")
     private String itemName;
     @NotEmpty(message = "Дайте небольшое описание для товара")
+    @Size(max = 500)
     private String description;
     @NotEmpty(message = "Укажите с какого города склад")
     private String city;

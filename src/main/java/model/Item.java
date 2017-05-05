@@ -15,10 +15,19 @@ public class Item {
 
     @Column(unique = true)
     private String itemName;
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String description;
     @Column
     private Integer amount;
+
+    public Item() {
+    }
+
+    public Item(String itemName, String description, Integer amount) {
+        this.itemName = itemName;
+        this.description = description;
+        this.amount = amount;
+    }
 
     public Integer getAmount() {
         return amount;

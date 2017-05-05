@@ -16,6 +16,14 @@ public class Stock {
 
     private String address;
 
+    public Stock() {
+    }
+
+    public Stock(String city, String address) {
+        this.city = city;
+        this.address = address;
+    }
+
     public int getId() {
         return id;
     }
