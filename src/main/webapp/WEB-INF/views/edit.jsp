@@ -1,20 +1,20 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: admin
+  Date: 04.05.2017
+  Time: 12:19
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/style.css">
 <link rel="stylesheet" href="/resources/css/signin.css">
-<%--
-  Created by IntelliJ IDEA.
-  User: admin
-  Date: 02.05.2017
-  Time: 18:55
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Creating Item</title>
+    <title>Редактирование</title>
 </head>
 <body>
 <%--HEADER--%>
@@ -34,7 +34,7 @@
                 <li class="active"><a href="/">Главная</a></li>
                 <li><a href="/all_users">Пользователи</a></li>
                 <li><a href="/new">Добавить товар</a></li>
-                <li class="navbar-right"><a href="/logout">Выйти</a></li>
+                <li><a href="/logout">Выйти</a></li>
             </ul>
             <form class="navbar-form navbar-right" action="/">
                 <input type="text" name="params" class="form-control" placeholder="Поиск по названию...">
@@ -42,9 +42,10 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
-<div class="container">
-    <sf:form cssClass="form-signin" action="/new" method="post" modelAttribute="itemform">
-        <h2 class="form-signin-heading">Создать товар</h2>
+<%--HEADER end--%>
+<div class="container" style="margin-top: 75px">
+    <sf:form cssClass="form-signin" action="/edit?id=${item.id}" method="post" modelAttribute="itemform">
+        <h2 class="form-signin-heading">Изменить товар</h2>
         <div class="panel panel-default panel-body">
             <sf:errors path="itemName"/>
             <sf:input placeholder="Название" cssClass="form-control" path="itemName"/> <br>

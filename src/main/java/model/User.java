@@ -22,12 +22,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private ActiveRole isActive;
 
-    public ActiveRole getIsActive() {
-        return isActive;
-    }
-    public void setIsActive(ActiveRole isActive) {
-        this.isActive = isActive;
-    }
     public String getName() {
         return name;
     }
@@ -57,5 +51,11 @@ public class User {
     }
     public void setRole(UserRole role) {
         this.role = role;
+    }
+    public ActiveRole getIsActive() {
+        return isActive;
+    }
+    public void setIsActive(ActiveRole isActive) {
+        this.isActive = isActive;
     }
 }

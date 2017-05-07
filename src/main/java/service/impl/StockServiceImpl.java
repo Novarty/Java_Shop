@@ -20,12 +20,6 @@ public class StockServiceImpl implements StockService {
     @Autowired
     ItemInStockRepository itemInStockRepository;
 
-//    @Override
-//    public void saveStock(ItemCreatingForm form) {
-//        Stock stock = ItemCreatingFormToStockTransformer.transform(form);
-//        stockRepository.save(stock);
-//    }
-
     @Override
     public void save(Stock stock) {
         stockRepository.save(stock);

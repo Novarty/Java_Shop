@@ -8,7 +8,6 @@ import java.util.List;
  * Created by admin on 02.05.2017.
  */
 public interface ItemService {
-    //void saveNewItem(ItemCreatingForm form);
     void save(Item item);
     List<Item> getAllItems();
 //    void editItem(ItemCreatingForm form);

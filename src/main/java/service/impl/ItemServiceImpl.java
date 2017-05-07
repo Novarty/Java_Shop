@@ -17,12 +17,6 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     ItemRepository itemRepository;
 
-//    @Override
-//    public void saveNewItem(ItemCreatingForm form) {
-//        Item item = ItemCreatingFormToItemTransformer.transform(form);
-//        itemRepository.save(item);
-//    }
-
     @Override
     public void save(Item item) {
         itemRepository.save(item);

@@ -44,11 +44,30 @@
                     <li><a href="/logout">Выйти</a></li>
                 </security:authorize>
             </ul>
+            <form class="navbar-form navbar-right" action="/">
+                <input type="text" name="params" class="form-control" placeholder="Поиск по названию...">
+            </form>
         </div><!--/.nav-collapse -->
     </div>
-</div><%--HEADER end--%>
+</div>
+<%--HEADER end--%>
+
 <div class="container" style="margin-top: 75px;"><%--Items--%>
     <div class="row">
+        <c:if test="${params != null}">  <%--Вывод результата поиска--%>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="/resources/img/img.png" alt="...">
+                        <div class="caption">
+                            <h3 class="center">${params.itemName}</h3>
+                            <p class="center"><a href="#" class="btn btn-primary" role="button">В корзину</a> <a
+                                    href="/show?id=${params.id}" class="btn btn-default"
+                                    role="button">Подробнее</a></p>
+                        </div>
+                    </div>
+                </div>
+            <%--Конец вывода результата поиска--%>
+        </c:if>
         <c:forEach items="${items}" var="item">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
@@ -63,6 +82,7 @@
             </div>
         </c:forEach>
     </div>
-</div> <%--Items end--%>
+</div>
+<%--Items end--%>
 </body>
 </html>

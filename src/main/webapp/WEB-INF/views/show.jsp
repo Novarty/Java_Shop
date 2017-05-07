@@ -42,6 +42,9 @@
                         <li><a href="/logout">Выйти</a></li>
                     </security:authorize>
                 </ul>
+                <form class="navbar-form navbar-right" action="/">
+                    <input type="text" name="params" class="form-control" placeholder="Поиск по названию...">
+                </form>
             </div><!--/.nav-collapse -->
         </div>
     </div><%--HEADER end--%>
