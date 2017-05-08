@@ -20,6 +20,14 @@ public class Item {
     @Column
     private Integer amount;
 
+    @OneToOne(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ItemsInStock itemsInStock;
+
+
+    @OneToOne(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ItemsInOrder itemsInOrder;
+
+
     public Item() {
     }
 
@@ -52,5 +60,21 @@ public class Item {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ItemsInStock getItemsInStock() {
+        return itemsInStock;
+    }
+
+    public void setItemsInStock(ItemsInStock itemsInStock) {
+        this.itemsInStock = itemsInStock;
+    }
+
+    public ItemsInOrder getItemsInOrder() {
+        return itemsInOrder;
+    }
+
+    public void setItemsInOrder(ItemsInOrder itemsInOrder) {
+        this.itemsInOrder = itemsInOrder;
     }
 }

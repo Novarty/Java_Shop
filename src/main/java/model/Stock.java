@@ -16,6 +16,12 @@ public class Stock {
 
     private String address;
 
+    @OneToOne(mappedBy = "stock", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ItemsInStock itemsInStock;
+
+    @OneToOne(mappedBy = "stock", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ItemsInOrder itemsInOrder;
+
     public Stock() {
     }
 
@@ -46,5 +52,21 @@ public class Stock {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public ItemsInStock getItemsInStock() {
+        return itemsInStock;
+    }
+
+    public void setItemsInStock(ItemsInStock itemsInStock) {
+        this.itemsInStock = itemsInStock;
+    }
+
+    public ItemsInOrder getItemsInOrder() {
+        return itemsInOrder;
+    }
+
+    public void setItemsInOrder(ItemsInOrder itemsInOrder) {
+        this.itemsInOrder = itemsInOrder;
     }
 }

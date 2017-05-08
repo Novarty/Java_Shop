@@ -1,6 +1,7 @@
 package controllers;
 
 import form.ItemCreatingForm;
+import form.UserForm;
 import model.Item;
 import model.ItemsInStock;
 import model.Stock;
@@ -21,7 +22,6 @@ import service.StockService;
 import service.UserService;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Created by admin on 27.04.2017.
@@ -39,23 +39,34 @@ public class AdminController {
     private ItemInStockRepository itemInStockRepository;
 
     @RequestMapping(value = "/all_users", method = RequestMethod.GET)
-    private String allUsersPage(ModelMap model){
-        List<User> users = userService.getAllUsers();
-        model.addAttribute("users", users);
+    private String allUsersPage(ModelMap model) {
+        model.addAttribute("userform", new UserForm());
+        model.addAttribute("users", userService.getAllUsers());
         return "all_users";
     }
+
     @Secured(value = "ROLE_ADMIN")
     @RequestMapping(value = "/all_users", method = RequestMethod.POST)
-    private String editUsersInfo(ModelMap model){
-
-        return "all_users";
+    private String editUsersInfo(@ModelAttribute("userform") UserForm form, @RequestParam(value = "id", required = false) String param) {
+        if (param != null) {
+            User user = userService.findOneById(Integer.valueOf(param));
+            userService.delete(user);
+            return "redirect:/all_users";
+        }
+        System.out.println("не работает");
+        User user = userService.findOneById(form.getId());
+        user.setId(form.getId());
+        user.setIs_confirm(form.isIs_confirm());
+        userService.updateUser(user);
+        return "redirect:/all_users";
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    private String getNewItemPage(Model model){
+    private String getNewItemPage(Model model) {
         model.addAttribute("itemform", new ItemCreatingForm());
         return "new";
     }
+
     @Secured(value = "ROLE_ADMIN")
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     private String createNewItem(@ModelAttribute("itemform") @Valid ItemCreatingForm form, BindingResult bindingResult, ModelMap modelMap) {
@@ -63,8 +74,8 @@ public class AdminController {
             modelMap.addAttribute("error", bindingResult.getAllErrors());
             return "new";
         }
-        Item item = new Item(form.getItemName(),form.getDescription(),form.getAmount());
-        Stock stock = new Stock(form.getCity(),form.getAddress());
+        Item item = new Item(form.getItemName(), form.getDescription(), form.getAmount());
+        Stock stock = new Stock(form.getCity(), form.getAddress());
         ItemsInStock itemsInStock = new ItemsInStock();
         itemsInStock.setItem(item);
         itemsInStock.setStock(stock);
@@ -73,13 +84,15 @@ public class AdminController {
         stockService.saveItemInStock(itemsInStock);
         return "redirect:/";
     }
+
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    private String editItemPage(Model model, @RequestParam("id") String param){
+    private String editItemPage(Model model, @RequestParam("id") String param) {
         Item item = itemService.findOneById(Integer.valueOf(param));
-        model.addAttribute("item",item);
+        model.addAttribute("item", item);
         model.addAttribute("itemform", new ItemCreatingForm());
         return "/edit";
     }
+
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     private String editItem(@ModelAttribute("itemform") @Valid ItemCreatingForm form, BindingResult bindingResult, ModelMap modelMap, @RequestParam("id") String param) {
         Item item = itemService.findOneById(Integer.valueOf(param));
@@ -92,9 +105,9 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/show")
-    private String showItemPage(Model model, @RequestParam("id") String param){
+    private String showItemPage(Model model, @RequestParam("id") String param) {
         Item item = itemService.findOneById(Integer.valueOf(param));
-        model.addAttribute("item",item);
+        model.addAttribute("item", item);
         return "show";
     }
 }

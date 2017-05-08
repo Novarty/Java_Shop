@@ -13,14 +13,20 @@ public class ItemsInOrder {
     private int id;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "item_id", unique = true, nullable = false)
+    @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "stock_id", unique = true, nullable = false)
+    @JoinColumn(name = "stock_id", nullable = false)
     private Stock stock;
 
-//    private int amount;
+    public ItemsInOrder() {
+    }
+
+    public ItemsInOrder(Item item, Stock stock) {
+        this.item = item;
+        this.stock = stock;
+    }
 
     public int getId() {
         return id;
@@ -28,10 +34,20 @@ public class ItemsInOrder {
     public void setId(int id) {
         this.id = id;
     }
-//    public int getAmount() {
-//        return amount;
-//    }
-//    public void setAmount(int amount) {
-//        this.amount = amount;
-//    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
 }

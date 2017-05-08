@@ -7,6 +7,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%--<%@ page isELIgnored="false" %>--%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
@@ -46,38 +47,51 @@
 <%--HEADER end--%>
 <div class="container" style="margin-top: 75px;"><%--Таблица пользователей--%>
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <form action="/all_users">
-                <table class="table table-bordered table-hover">
+        <div class="col-md-4 col-md-offset-1">
+            <h1>Список пользователей</h1>
+            <table class="table table-bordered table-hover white">
+                <thead>
+                <tr>
+                    <th class="bold">Email</th>
+                    <th class="bold">Имя пользователя</th>
+                    <th class="bold">Роль</th>
+                    <th class="bold">Статус активности</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <c:forEach items="${users}" var="user">
+                    <tbody>
                     <tr>
-                        <th class="bold">Email</th>
-                        <th class="bold">Имя пользователя</th>
-                        <th class="bold">Роль</th>
-                        <th class="bold">Статус активности</th>
-                    </tr>
-                    <c:forEach items="${users}" var="user">
-                        <tr>
+                        <sf:form action="/all_users" method="post" modelAttribute="userform">
                             <td><c:out value="${user.email}"/></td>
                             <td><c:out value="${user.name}"/></td>
                             <td><c:out value="${user.role}"/></td>
-                            <td><c:out value="${user.isActive}"/></td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                <button class="btn btn-primary" type="submit">Сохранить изменения</button>
-                <a class="btn btn-default" href="/">На главную</a>
-            </form>
+                            <td><c:if test="${user.is_confirm == true}">подтвержден</c:if>
+                                <c:if test="${user.is_confirm != true}">не подтвержден</c:if></td>
+                            <td><sf:select path="is_confirm">
+                                <sf:option value="true">подтвердить</sf:option>
+                                <sf:option value="false">отменить подтверждение</sf:option>
+                            </sf:select></td>
+                            <td>
+                                <sf:button value="${user.id}" name="id"
+                                           class="btn btn-success">Изменить</sf:button>
+                            </td>
+                        </sf:form>
+                        <form action="/all_users" method="post">
+                            <td>
+                                <button type="submit" value="${user.id}" name="id"
+                                           class="btn btn-danger">Удалить</button>
+                            </td>
+                        </form>
+                    </tr>
+                    </tbody>
+                </c:forEach>
+            </table>
+            <a class="btn btn-default" href="/">На главную</a>
         </div>
     </div>
 </div>
-<%--<script>--%>
-<%--function changeRole(input) {--%>
-<%--$.post('/userlist?role=' + $(input).attr('data-role') + '&id=' + $(input).attr('data-user'));--%>
-<%--}--%>
-<%--</script>--%>
-<script src="/resources/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.js"></script>
 </body>
 </html>
-

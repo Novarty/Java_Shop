@@ -1,7 +1,6 @@
 package form;
 
 import model.User;
-import model.enums.ActiveRole;
 import model.enums.UserRole;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -17,7 +16,7 @@ public class UserRegistrationFormToUserTransformer {
         user.setEmail(form.getEmail());
         user.setName(form.getName());
         user.setRole(UserRole.ROLE_BUYER);
-        user.setIsActive(ActiveRole.NOT_CONFIRMED);
+        user.setIs_confirm(false);
         user.setPassword(encoder.encode(form.getPassword()));
         return user;
     }

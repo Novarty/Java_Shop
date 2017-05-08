@@ -1,6 +1,5 @@
 package model;
 
-import model.enums.ActiveRole;
 import model.enums.UserRole;
 
 import javax.persistence.*;
@@ -19,8 +18,7 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
-    @Enumerated(EnumType.STRING)
-    private ActiveRole isActive;
+    private boolean is_confirm;
 
     public String getName() {
         return name;
@@ -52,10 +50,10 @@ public class User {
     public void setRole(UserRole role) {
         this.role = role;
     }
-    public ActiveRole getIsActive() {
-        return isActive;
+    public boolean isIs_confirm() {
+        return is_confirm;
     }
-    public void setIsActive(ActiveRole isActive) {
-        this.isActive = isActive;
+    public void setIs_confirm(boolean is_confirm) {
+        this.is_confirm = is_confirm;
     }
 }

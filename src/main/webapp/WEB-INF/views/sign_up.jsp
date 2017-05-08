@@ -25,10 +25,12 @@
             <sf:input placeholder="Пароль" type="password" cssClass="form-control" path="password"/> <br>
             <sf:errors path="repassword"/>
             <sf:input placeholder="Повторите пароль" type="password" cssClass="form-control" path="repassword"/> <br>
-            <button class="btn btn-primary" type="submit">Сохранить</button>
+            <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
         </div>
-        <a class="center" href="/">На главную</a>
-        <a href="/sign_in">Войти</a>
+        <div class="center">
+            <a href="/sign_in" class="btn btn-info push">Авторизоваться</a>
+            <a href="/" class="btn btn-default">На главную</a>
+        </div>
     </sf:form>
 </div>
 <script charset="UTF-8" type="text/javascript">vkdId = 'gmakpjahbdpafpgbnnlhbgnjacdniaeb';</script>

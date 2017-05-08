@@ -10,5 +10,8 @@ import java.util.List;
  */
 public interface UserService {
     void saveNewUser(UserRegistrationForm form);
+    void updateUser(User user);
     List<User> getAllUsers();
+    User findOneById(Integer id);
+    void delete(User user);
 }

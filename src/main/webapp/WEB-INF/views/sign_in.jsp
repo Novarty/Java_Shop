@@ -21,7 +21,7 @@
         <input type="password" class="form-control" placeholder="Password" name="password" required>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a href="/sign_up">Нет учетной записи?</a>
+        <a style="margin-top: 7px" href="/sign_up">Нет учетной записи?</a>
     </form>
 </div> <!-- /container -->
 
