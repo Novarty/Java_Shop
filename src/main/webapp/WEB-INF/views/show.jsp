@@ -1,4 +1,5 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: admin
@@ -31,6 +32,8 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Главная</a></li>
                     <security:authorize access="hasRole('ROLE_BUYER')">
+                        <li><a href="/basket">Корзина</a></li>
+                        <li><a href="#">Мои заказы</a></li>
                         <li><a href="/logout">Выйти</a></li>
                     </security:authorize>
                     <security:authorize access="isAnonymous()">
@@ -54,10 +57,26 @@
                 <div class="thumbnail">
                     <img src="/resources/img/img.png" alt="...">
                     <div class="caption">
-                        <h3 class="center">${item.itemName}</h3>
+                        <p class="center lead">${item.itemName}</p>
                         <p>${item.description}</p>
-                        <p class="center"><a href="#" class="btn btn-primary" role="button">В корзину</a>
-                            <a href="/" class="btn btn-default" role="button">Вернуться</a></p>
+                        <c:if test="${item.amount == 0}">
+                            <h4 class="center text-info">Товара нет в наличии</h4>
+                            <p class="center"><a href="#" class="btn btn-primary disabled" role="button">В корзину</a>
+                                <a href="/" class="btn btn-default" role="button">Вернуться</a>
+                                <security:authorize access="hasRole('ROLE_ADMIN')">
+                                    <a href="/edit?id=${item.id}" class="btn btn-info" role="button">Изменить</a>
+                                </security:authorize>
+                            </p>
+                        </c:if>
+                        <c:if test="${item.amount != 0}">
+                            <p class="center">На складе: ${item.amount}шт.</p>
+                            <p class="center"><a href="#" class="btn btn-primary" role="button">В корзину</a>
+                                <a href="/" class="btn btn-default" role="button">Вернуться</a>
+                            <security:authorize access="hasRole('ROLE_ADMIN')">
+                                <a href="/edit?id=${item.id}" class="btn btn-info" role="button">Изменить</a>
+                            </security:authorize>
+                            </p>
+                        </c:if>
                     </div>
                 </div>
             </div>

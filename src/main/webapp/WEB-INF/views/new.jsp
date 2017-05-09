@@ -14,7 +14,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Creating Item</title>
+    <title>Добавление товара</title>
 </head>
 <body>
 <%--HEADER--%>
@@ -31,9 +31,9 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Главная</a></li>
+                <li><a href="/">Главная</a></li>
                 <li><a href="/all_users">Пользователи</a></li>
-                <li><a href="/new">Добавить товар</a></li>
+                <li class="active"><a href="/new">Добавить товар</a></li>
                 <li class="navbar-right"><a href="/logout">Выйти</a></li>
             </ul>
             <form class="navbar-form navbar-right" action="/">

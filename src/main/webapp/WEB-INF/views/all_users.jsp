@@ -33,8 +33,8 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Главная</a></li>
-                <li><a href="/all_users">Пользователи</a></li>
+                <li><a href="/">Главная</a></li>
+                <li class="active"><a href="/all_users">Пользователи</a></li>
                 <li><a href="/new">Добавить товар</a></li>
                 <li><a href="/logout">Выйти</a></li>
             </ul>

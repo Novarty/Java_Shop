@@ -30,4 +30,5 @@
 
     <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <bean id="authProvider" class="security.AuthProviderImpl"/>
+    <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
 </beans>

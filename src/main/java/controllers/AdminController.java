@@ -90,17 +90,23 @@ public class AdminController {
         Item item = itemService.findOneById(Integer.valueOf(param));
         model.addAttribute("item", item);
         model.addAttribute("itemform", new ItemCreatingForm());
-        return "/edit";
+        return "edit";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     private String editItem(@ModelAttribute("itemform") @Valid ItemCreatingForm form, BindingResult bindingResult, ModelMap modelMap, @RequestParam("id") String param) {
-        Item item = itemService.findOneById(Integer.valueOf(param));
-        modelMap.addAttribute("item", item);
         if (bindingResult.hasErrors()) {
+            Item item = itemService.findOneById(Integer.valueOf(param));
             modelMap.addAttribute("error", bindingResult.getAllErrors());
+            modelMap.addAttribute("item", item);
             return "edit";
         }
+        Item item = new Item(form.getItemName(), form.getDescription(), form.getAmount());
+        item.setId(Integer.valueOf(param));
+        Stock stock = new Stock(form.getCity(), form.getAddress());
+        stock.setId(Integer.valueOf(param));
+        itemService.save(item);
+        stockService.save(stock);
         return "redirect:/";
     }
 
