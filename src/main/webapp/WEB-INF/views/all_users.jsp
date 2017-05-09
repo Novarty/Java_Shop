@@ -81,7 +81,7 @@
                         </sf:form>
                         <form action="/all_users" method="post">
                             <td>
-                                <button type="submit" value="${user.id}" name="id"
+                                <button type="submit" value="${user.id}" name="name"
                                            class="btn btn-danger">Удалить</button>
                             </td>
                         </form>

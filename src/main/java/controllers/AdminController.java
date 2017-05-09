@@ -47,7 +47,7 @@ public class AdminController {
 
     @Secured(value = "ROLE_ADMIN")
     @RequestMapping(value = "/all_users", method = RequestMethod.POST)
-    private String editUsersInfo(@ModelAttribute("userform") UserForm form, @RequestParam(value = "id", required = false) String param) {
+    private String editUsersInfo(@ModelAttribute("userform") UserForm form, @RequestParam(value = "name", required = false) String param) {
         if (param != null) {
             User user = userService.findOneById(Integer.valueOf(param));
             userService.delete(user);
