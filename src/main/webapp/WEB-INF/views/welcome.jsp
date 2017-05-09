@@ -65,10 +65,10 @@
                             <c:if test="${params.amount == 0}">
                                 <h4 class="center text-info">Товара нет в наличии</h4>
                                 <p class="center"><a href="#" class="btn btn-primary disabled" role="button">В корзину</a> <a
-                                        href="/show?id=${item.id}" class="btn btn-default"
+                                        href="/show?id=${params.id}" class="btn btn-default"
                                         role="button">Подробнее</a>
                                     <security:authorize access="hasRole('ROLE_ADMIN')">
-                                        <a href="/edit?id=${item.id}" class="btn btn-info" role="button">Изменить</a>
+                                        <a href="/edit?id=${params.id}" class="btn btn-info" role="button">Изменить</a>
                                     </security:authorize>
                                 </p>
                             </c:if>
@@ -78,7 +78,7 @@
                                         href="/show?id=${params.id}" class="btn btn-default"
                                         role="button">Подробнее</a>
                                 <security:authorize access="hasRole('ROLE_ADMIN')">
-                                    <a href="/edit?id=${item.id}" class="btn btn-info" role="button">Изменить</a>
+                                    <a href="/edit?id=${params.id}" class="btn btn-info" role="button">Изменить</a>
                                 </security:authorize>
                                 </p>
                             </c:if>
